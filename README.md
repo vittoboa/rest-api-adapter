@@ -19,3 +19,12 @@ $ cd rest-api-adapter
 # Run the application
 $ node .
 ```
+
+## Sample requests
+Sample requests to the API can be sent with _curl_ or software platforms like _[Postman](https://www.postman.com/)_, _[Insomnia](https://insomnia.rest/)_, etc.
+
+When the application is executed in _localhost_, the URL of the request should follow the format:
+```
+http://localhost:8080/users/<userId>/custom-posts
+```
+Where \<userId\> is the id of the user whose posts and comments should be returned by the API.
