@@ -15,6 +15,12 @@ app.get('/users/:userId/custom-posts', async (req, res) => {
     const posts_res = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts/`);
     const posts = await posts_res.json();
 
+    // respond with 404 code if there are no posts for the given user
+    if (!posts.length) {
+        res.sendStatus(404);
+        return;
+    }
+
     // respond with the list of posts
     res.json(posts);
 });
