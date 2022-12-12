@@ -28,3 +28,33 @@ When the application is executed in _localhost_, the URL of the request should f
 http://localhost:8080/users/<userId>/custom-posts
 ```
 Where \<userId\> is the id of the user whose posts and comments should be returned by the API.
+
+## Sample responses
+### Status code 200
+A JSON response will be returned whenever there are posts for the user with the given id. It will contain a list of all posts of the given user. Each post will have a _userId_, a post _id_, a _title_, a _body_, and a list of up to 5 _comments_. Each comment will have a _postId_, a comment _id_, the commenter _name_, the commenter _email_, and a _body_.
+
+For instance, the following is the beginning of the response for the request to the URL <span>_http://</span>localhost:8080/users/1/custom-posts_
+```
+[
+    {
+        "userId": 1,
+        "id": 1,
+        "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+        "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
+        "comments": [
+            {
+                "postId": 1,
+                "id": 1,
+                "name": "id labore ex et quam laborum",
+                "email": "Eliseo@gardner.biz",
+                "body": "laudantium enim quasi est quidem magnam voluptate ipsam eos\ntempora quo necessitatibus\ndolor quam autem quasi\nreiciendis et nam sapiente accusantium"
+            },
+            /* other comments ... */
+        ]
+    },
+    /* other posts ... */
+]
+```
+
+### Status code 404
+A 404 status code will be returned if there are no posts for the user with the given id.
